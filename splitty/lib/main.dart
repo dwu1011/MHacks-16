@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:splitty/CreateExpense.dart';
+import 'package:splitty/MyPayment.dart';
+import 'package:splitty/Owned.dart';
 import 'Feed.dart';
+import 'Profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,17 +61,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +76,73 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    Widget page;
+    switch (_selectedIndex) {
+      case 0:
+        page = Feed();
+        break;
+      case 1:
+        page = YourPayment();
+        break;
+      case 2:
+        page = CreateExpense();
+        break;
+      case 3:
+        page = Owned();
+        break;
+      case 4:
+        page = ProfileSettings();
+        break;
+      default:
+        throw UnimplementedError('no widget for $_selectedIndex');
+    }
+    return Scaffold(
+      body: Center(
+        child: page, //New
+        ),
+        bottomNavigationBar:  BottomNavigationBar(
+              selectedItemColor: Color.fromARGB(255, 116, 189, 129),
+              unselectedItemColor: Color.fromARGB(255, 42, 59, 45),
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list),
+                  label: 'My expense',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.add),
+                  label: 'Add Expense',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.money),
+                  label: 'Owned',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.people),
+                  label: 'Profile',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+        ),
+        
+       // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class GeneratorPage extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    int _counter = 10;
+
+  void _incrementCounter() {
+    
+  }
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -85,7 +151,6 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -125,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
