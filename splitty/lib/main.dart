@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -181,16 +182,7 @@ class GeneratorPage extends StatelessWidget{
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:(){ 
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Feed()),
-          );
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      
     );
   }
 }

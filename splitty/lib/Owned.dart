@@ -79,12 +79,7 @@ class Owned extends StatelessWidget {
                         child: Container(
                           width: 32,
                           height: 28.26,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage("https://via.placeholder.com/32x28"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          child: Icon(Icons.person),
                         ),
                       ),
                     ],
@@ -322,12 +317,7 @@ class Owned extends StatelessWidget {
                                               child: Container(
                                                 width: 61,
                                                 height: 53.87,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: NetworkImage("https://via.placeholder.com/61x54"),
-                                                    fit: BoxFit.fill,
-                                                  ),
-                                                ),
+                                                child: Icon(Icons.person, size: 50),
                                               ),
                                             ),
                                           ],
@@ -502,12 +492,7 @@ class Owned extends StatelessWidget {
                                                       child: Container(
                                                         width: 61,
                                                         height: 53.87,
-                                                        decoration: BoxDecoration(
-                                                          image: DecorationImage(
-                                                            image: NetworkImage("https://via.placeholder.com/61x54"),
-                                                            fit: BoxFit.fill,
-                                                          ),
-                                                        ),
+                                                        child: Icon(Icons.person, size: 50),
                                                       ),
                                                     ),
                                                     Positioned(
@@ -560,12 +545,7 @@ class Owned extends StatelessWidget {
                                               child: Container(
                                                 width: 61,
                                                 height: 53.87,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: NetworkImage("https://via.placeholder.com/61x54"),
-                                                    fit: BoxFit.fill,
-                                                  ),
-                                                ),
+                                                child: Icon(Icons.person, size: 50),
                                               ),
                                             ),
                                             Positioned(

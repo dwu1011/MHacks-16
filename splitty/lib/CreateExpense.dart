@@ -20,22 +20,7 @@ class CreateExpense extends StatelessWidget {
                   width: 343,
                   height: 36,
                   padding: const EdgeInsets.only(right: 70),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Back',
-                        style: TextStyle(
-                          color: Color(0xFF5DB074),
-                          fontSize: 16,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                      ),
-                      Text(
+                  child: Text(
                         'New Payment',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -46,8 +31,6 @@ class CreateExpense extends StatelessWidget {
                           height: 0,
                         ),
                       ),
-                    ],
-                  ),
                 ),
               ),
               Positioned(
@@ -78,12 +61,7 @@ class CreateExpense extends StatelessWidget {
                         child: Container(
                           width: 32,
                           height: 28.26,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage("https://via.placeholder.com/32x28"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          child: Icon(Icons.person),
                         ),
                       ),
                     ],
@@ -159,7 +137,7 @@ class CreateExpense extends StatelessWidget {
                         top: 14.58,
                         child: SizedBox(
                           width: 217.31,
-                          height: 26.38,
+                          height: 36.38,
                           child: Text(
                             'Compose your message here...',
                             style: TextStyle(
@@ -273,12 +251,7 @@ class CreateExpense extends StatelessWidget {
                                 child: Container(
                                   width: 61,
                                   height: 53.87,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage("https://via.placeholder.com/61x54"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                                  child: Icon(Icons.person, size: 50),
                                 ),
                               ),
                               Positioned(

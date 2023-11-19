@@ -4,11 +4,13 @@ class expense extends StatefulWidget {
   final String type;
   final String amount;
   final IconData icon;
+  final int id;
   const expense(
       {super.key,
       required this.type,
       required this.amount,
-      required this.icon});
+      required this.icon,
+      required this.id});
 
   @override
   _expenseState createState() => _expenseState();
@@ -19,9 +21,21 @@ class _expenseState extends State<expense> {
     return Container(
       width: 314,
       height: 56,
-      color: const Color.fromARGB(255, 185, 82, 82),
-      padding: new EdgeInsets.only(bottom: 10.0),
+      
+      decoration: ShapeDecoration(
+        color: Color.fromARGB(255, 158, 158, 158),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      child: ElevatedButton(
+        onPressed: (){
+          setState(() {
+            
+          });
+        },
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Positioned(
             left: 0,
@@ -67,13 +81,40 @@ class _expenseState extends State<expense> {
           ),
         ],
       ),
+      ),
     );
   }
 }
 
-class Feed extends StatelessWidget {
-  const Feed({super.key});
-  
+class Feed extends StatefulWidget {
+  List<expense> expenses = [
+                        expense(
+                              type: "Payment",
+                              amount: "100",
+                              icon: Icons.people,
+                              id: 0),
+                        expense(
+                              type: "Payment",
+                              amount: "100",
+                              icon: Icons.money,
+                              id: 1),
+                        expense(
+                              type: "Owned",
+                              amount: "100",
+                              icon: Icons.money,
+                              id: 2),
+                      ];
+                      
+  Feed({super.key});
+  void addExpense(expense e){
+    expenses.add(e);
+  }
+  @override
+  _FeedState createState() => _FeedState();
+}
+
+class _FeedState extends State<Feed> {
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -117,71 +158,13 @@ class Feed extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8)),
                   ),
                   child: new SingleChildScrollView(
-                    padding: EdgeInsets.all(10.0),
                     child: Column(
-                      children: [
-                        Positioned(
-                          left: 28,
-                          top: 193,
-                          child: expense(
-                              type: "Payment",
-                              amount: "100",
-                              icon: Icons.people),
-                        ),
-                        Positioned(
-                          left: 28,
-                          top: 265,
-                          child: expense(
-                              type: "Payment",
-                              amount: "100",
-                              icon: Icons.money),
-                        ),
-                      ],
+                      children: widget.expenses,
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 320,
-                top: 57,
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 32,
-                          height: 32,
-                          decoration: ShapeDecoration(
-                            color: Color(0xFFBDBDBD),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 32,
-                          height: 28.26,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://via.placeholder.com/32x28"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              
               Positioned(
                 left: 314,
                 top: 676,
